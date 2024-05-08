@@ -195,8 +195,8 @@ def summary():
                 for line in file:
                     message = json.loads(line.strip())
                     message_date = datetime.fromtimestamp(message['Date'])
-                    logger.info(message_date,
-                    (start_date <= message_date <= end_date))
+                    #logger.info(message_date,
+                    #(start_date <= message_date <= end_date))
                     # Проверяем, что сообщение находится в выбранном временном диапазоне
                     if start_date <= message_date <= end_date:
                         user_id = message['PeerID']['UserID']
