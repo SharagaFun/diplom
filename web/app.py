@@ -38,6 +38,9 @@ Talisman(app, content_security_policy=csp, force_https=False)
 asgi_app = WsgiToAsgi(app)
 app.config['SECRET_KEY'] = os.urandom(24)
 csrf = CSRFProtect(app)
+app.config['WTF_CSRF_CHECK_DEFAULT'] = False
+app.config['WTF_CSRF_TIME_LIMIT'] = None
+app.config['WTF_CSRF_HEADERS'] = ['X-CSRFToken'] 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:password@db/dbname'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
