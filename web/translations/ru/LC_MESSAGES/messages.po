@@ -1,0 +1,59 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-04-10 22:33+0300\n"
+"PO-Revision-Date: 2024-04-10 22:25+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: templates/onboarding.html:5
+msgid "Onboarding"
+msgstr "Онбординг"
+
+#: templates/onboarding.html:8
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: templates/onboarding.html:9
+msgid ""
+"To use this application, you need to obtain your API ID and API Hash from"
+" the official Telegram Developer website."
+msgstr "Чтобы использовать это приложение, вам необходимо получить ваши API ID и API Hash на официальном сайте разработчиков Telegram."
+
+#: templates/onboarding.html:11
+msgid "Go to"
+msgstr "Перейдите на"
+
+#: templates/onboarding.html:12
+msgid "Log in using your phone number."
+msgstr "Войдите, используя свой номер телефона"
+
+#: templates/onboarding.html:13
+msgid ""
+"Navigate to the ‘API development tools’ section and fill out the form to "
+"create a new application."
+msgstr ""
+"Перейдите в раздел ‘API development tools’ и заполните форму "
+"создания нового приложения."
+
+#: templates/onboarding.html:14
+msgid "Once the form is filled out, you will receive your api_id and api_hash."
+msgstr "Как только форма будет заполнена, вы получите свои api_id и api_hash."
+
+#: templates/onboarding.html:16
+msgid "Continue"
+msgstr "Продолжить"
+

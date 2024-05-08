@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Links</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Generated Chat Links</h1>
+    <ul>
+        {% for user_id, link in links %}
+        <li>User ID: {{ user_id }} - <a href="{{ link }}" target="_blank">View Chat</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

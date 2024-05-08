@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script>
+            function toggleVisibility(contentId, buttonId) {
+                    var content = document.getElementById(contentId);
+                    var button = document.getElementById(buttonId);
+                    if (content.style.display === "none" || content.style.display === "") {
+                        content.style.display = "inline"; // Display the content
+                        button.style.display = "none"; // Hide the button
+                    } else {
+                        content.style.display = "none"; // Hide the content
+                        button.style.display = "inline-block"; // Show the button
+                    }
+            }
+        </script>
+</head>
+<body>
+    <div class="table-container">
+        <h1>Select Your Chats</h1>
+        <form action="/process" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>ID</th>
+                        <th>Phone</th>
+                        <th>Last Message</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.Username or 'None' }}</td>
+                        <td>{{ user.FirstName }}</td>
+                        <td>{{ user.LastName }}</td>
+                        <td>
+                            <button id="button-id{{ loop.index }}" class="btn-small" type="button" onclick="toggleVisibility('hidden-id{{ loop.index }}', 'button-id{{ loop.index }}')">Show</button>
+                            <span id="hidden-id{{ loop.index }}" class="hidden-info" style="display:none;" onclick="toggleVisibility('hidden-id{{ loop.index }}', 'button-id{{ loop.index }}')">{{ user.ID }}</span>
+                        </td>
+                        <td>
+                            <button id="button-phone{{ loop.index }}" class="btn-small" type="button" onclick="toggleVisibility('hidden-phone{{ loop.index }}', 'button-phone{{ loop.index }}')">Show</button>
+                            <span id="hidden-phone{{ loop.index }}" class="hidden-info" style="display:none;" onclick="toggleVisibility('hidden-phone{{ loop.index }}', 'button-phone{{ loop.index }}')">{{ user.PhoneNumber }}</span>
+                        </td>
+                        <td>{{ user.UpdatedAt.strftime('%H:%M %d.%m.%Y') }}</td>
+                        <td><input type="checkbox" name="selected_users" value="{{ user.ID }}"></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="submit" value="Share Selected" class="btn-continue">
+        </form>
+    </div>
+</body>
+</html>
+

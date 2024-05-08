@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Code</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Telegram login code</h1>
+        <form action="{{ url_for('onboarding.submit_code') }}" method="post">
+                <label for="code">The code you received from Telegram:</label>
+                <input type="text" id="code" name="code" placeholder="{{ _('12345') }}" required class="input-field">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="submit" value="Submit" class="btn-continue">
+        </form>
+        <div class="language-switcher">
+            <a href="{{ url_for('set_language', lang='en') }}">English</a> |
+            <a href="{{ url_for('set_language', lang='ru') }}">Русский</a>
+        </div>
+    </div>
+</body>
+</html>

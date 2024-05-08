@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function submitSummary() {
+            var startDate = document.getElementById('start-date').value;
+            var endDate = document.getElementById('end-date').value;
+            var chatId = {{ chat_id }};
+            var csrf_token = "{{ csrf_token() }}";
+            var data = {
+                chat_id: chatId,
+                start_date: startDate,
+                end_date: endDate,
+                csrf_token: csrf_token
+            };
+            fetch('{{ url_for('summary') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrf_token
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                var modal = document.getElementById('myModal');
+                var span = document.getElementsByClassName('close')[0];
+                var content = document.getElementById('summaryContent');
+                content.innerHTML = data.response.replace(/\n/g, '<br>'); // Заменяем переносы строк на тег <br>
+                modal.style.display = 'block'; // Показываем модальное окно
+                span.onclick = function() {
+                    modal.style.display = 'none'; // Скрываем модальное окно при клике на крестик
+                }
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = 'none'; // Скрываем модальное окно при клике вне его
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+        // Функция для конвертации даты в формат читаемый
+        function formatTimestamp(timestamp) {
+                    const date = new Date(timestamp * 1000);  // Преобразование Unix timestamp в миллисекунды
+                    const formattedDate = date.toLocaleDateString('en-GB', {
+                        day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'
+                    }).replace(/,/, '');  // Форматирование даты в дд.мм.гг чч:мм
+                    return formattedDate;
+                }
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    const dateElements = document.querySelectorAll('.message-date');
+                    dateElements.forEach(element => {
+                        const formattedDate = formatTimestamp(element.getAttribute('data-date'));
+                        element.textContent = formattedDate;  // Установка текста элемента
+                    });
+                });
+        function filterMessages() {
+            const search = document.getElementById('search-input').value.toLowerCase();
+            const messages = document.querySelectorAll('.message');
+
+            messages.forEach(message => {
+                const text = message.textContent.toLowerCase();
+                message.style.display = text.includes(search) ? '' : 'none';
+            });
+        }
+        
+        let selectedMessages = []; // Массив для хранения выбранных сообщений и элементов
+
+          function handleSelectMessage(timestamp, elem) {
+              const dateString = new Date(timestamp * 1000).toISOString().slice(0, 16);
+
+              // Проверяем, выбрано ли уже это сообщение
+              const foundIndex = selectedMessages.findIndex(x => x.timestamp === timestamp);
+              if (foundIndex !== -1) {
+                  // Удаляем из выбранных и меняем фон
+                  selectedMessages.splice(foundIndex, 1);
+                  elem.style.backgroundColor = "";
+              } else {
+                  // Если уже выбраны два сообщения, снимаем выбор с первого выбранного
+                  if (selectedMessages.length === 2) {
+                      const firstSelected = selectedMessages.shift(); // Убираем первое добавленное сообщение
+                      firstSelected.elem.style.backgroundColor = ""; // Сбрасываем фон старого элемента
+                  }
+
+                  // Добавляем новое сообщение в массив выбранных
+                  selectedMessages.push({ timestamp, elem });
+                  elem.style.backgroundColor = "lightblue"; // Выделяем новое сообщение
+              }
+
+              // Обновляем значения дат в форме
+              updateDateInputs();
+          }
+
+          function updateDateInputs() {
+              const dates = selectedMessages.map(x => x.timestamp).sort((a, b) => a - b); // Сортируем по времени
+              if (dates.length > 0) {
+                  document.getElementById('start-date').value = new Date(dates[0] * 1000).toISOString().slice(0, 16);
+              }
+              if (dates.length > 1) {
+                  document.getElementById('end-date').value = new Date(dates[1] * 1000).toISOString().slice(0, 16);
+              }
+              if (dates.length < 2) {
+                  document.getElementById('end-date').value = '';
+              }
+          }
+    </script>
+</head>
+<body>
+    <h1>Chat History (ID: {{ chat_id }} Name: {{chat_name}})</h1>
+    
+    <!-- Форма для выбора периода времени -->
+    <div class="date-picker">
+        <input type="datetime-local" id="start-date">
+        <input type="datetime-local" id="end-date">
+        <button onclick="submitSummary()">Краткое содержание</button>
+    </div>
+    <div class="message-search">
+            <input type="text" id="search-input" placeholder="Search messages..." oninput="filterMessages()">
+    </div>
+    <div class="chat-history">
+        {% for message in messages %}
+            <div class="message {% if message.Out %}outgoing{% else %}incoming{% endif %}" onclick="handleSelectMessage({{ message.Date }}, this)">
+                <p>{{ message.Message }}</p>
+                {% if message.Media and message.Media.Photo %}
+                <img src="data:image/jpeg;base64,{{ message.Media.Photo.Sizes[0].Bytes }}" alt="Photo">
+                    {% endif %}
+                <div class="message-date" data-date="{{ message.Date }}"></div>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="summaryContent"></p>
+        </div>
+    </div>
+    <a class = btn-continue href="{{ url_for('all_chats') }}">Back to All Chats</a>
+</body>
+</html>

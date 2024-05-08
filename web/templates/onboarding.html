@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ _('Onboarding') }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ _('Welcome') }}</h1>
+        <p>{{ _('To use this application, you need to obtain your API ID and API Hash from the official Telegram Developer website.') }}</p>
+        <ol>
+            <li>{{ _('Go to') }} <a class="link" href="https://my.telegram.org" target="_blank">my.telegram.org</a>.</li>
+            <li>{{ _('Log in using your phone number.') }}</li>
+            <li>{{ _('Navigate to the ‘API development tools’ section and fill out the form to create a new application.') }}</li>
+            <li>{{ _('Once the form is filled out, you will receive your api_id and api_hash.') }}</li>
+        </ol>
+        <button class="btn-continue" onclick="location.href='{{ url_for('onboarding.api_form') }}'">{{ _('Continue') }}</button>
+        <div class="language-switcher">
+            <a href="{{ url_for('set_language', lang='en') }}">English</a> |
+            <a href="{{ url_for('set_language', lang='ru') }}">Русский</a>
+        </div>
+    </div>
+</body>
+</html>

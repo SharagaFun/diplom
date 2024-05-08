@@ -1,0 +1,56 @@
+# English translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-04-10 22:33+0300\n"
+"PO-Revision-Date: 2024-04-10 22:25+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: templates/onboarding.html:5
+msgid "Onboarding"
+msgstr ""
+
+#: templates/onboarding.html:8
+msgid "Welcome"
+msgstr ""
+
+#: templates/onboarding.html:9
+msgid ""
+"To use this application, you need to obtain your API ID and API Hash from"
+" the official Telegram Developer website."
+msgstr ""
+
+#: templates/onboarding.html:11
+msgid "Go to"
+msgstr ""
+
+#: templates/onboarding.html:12
+msgid "Log in using your phone number."
+msgstr ""
+
+#: templates/onboarding.html:13
+msgid ""
+"Navigate to the ‘API development tools’ section and fill out the form to "
+"create a new application."
+msgstr ""
+
+#: templates/onboarding.html:14
+msgid "Once the form is filled out, you will receive your api_id and api_hash."
+msgstr ""
+
+#: templates/onboarding.html:16
+msgid "Continue"
+msgstr ""
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ _('Enter Your Telegram Credentials') }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Отображение флеш-сообщений -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <h1>{{ _('Enter Your Telegram Credentials') }}</h1>
+        <form action="{{ url_for('onboarding.submit_api_data') }}" method="post">
+            <label for="phone_number">{{ _('Phone Number') }}</label>
+            <input type="text" id="phone_number" name="phone_number" placeholder="{{ _('Your phone number') }}" required class="input-field">
+
+            <label for="api_id">{{ _('API ID') }}</label>
+            <input type="text" id="api_id" name="api_id" placeholder="{{ _('Your API ID') }}" required class="input-field">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <label for="api_hash">{{ _('API Hash') }}</label>
+            <input type="text" id="api_hash" name="api_hash" placeholder="{{ _('Your API Hash') }}" required class="input-field">
+
+            <button type="submit" class="btn-continue">{{ _('Submit') }}</button>
+        </form>
+        <div class="language-switcher">
+            <a href="{{ url_for('set_language', lang='en') }}">English</a> |
+            <a href="{{ url_for('set_language', lang='ru') }}">Русский</a>
+        </div>
+    </div>
+</body>
+</html>
+

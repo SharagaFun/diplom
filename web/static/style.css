@@ -1,0 +1,312 @@
+.btn-small {
+    padding: 3px 8px; /* Уменьшенные отступы */
+    font-size: 12px; /* Уменьшенный размер шрифта */
+    margin: 2px; /* Уменьшенные внешние отступы для компактности */
+    background-color: #0088cc; /* Синий цвет фона */
+    color: white; /* Белый текст */
+    border: none; /* Убираем границу */
+    border-radius: 3px; /* Скругляем углы */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    transition: background-color 0.3s; /* Плавное изменение фона при наведении */
+}
+
+.btn-small:hover {
+    background-color: #0077b3; /* Темно-синий цвет при наведении */
+}
+
+.table-container {
+    max-width: 100%; /* Позволяет таблице быть на всю ширину */
+}
+table {
+    width: 80%; /* или любая другая ширина по вашему усмотрению */
+    margin: 20px auto; /* центрирование таблицы */
+    border-collapse: collapse; /* убираем двойные линии между ячейками */
+    background-color: #ffffff; /* фон таблицы */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* тень для таблицы */
+}
+
+th, td {
+    padding: 8px; /* уменьшаем отступы внутри ячеек */
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+input[type='checkbox'] {
+    transform: scale(2); /* увеличиваем чекбоксы */
+    margin-right: 5px;
+}
+
+.hidden-info {
+    display: none; /* По умолчанию не отображается */
+    color: #0088cc; /* Синий цвет текста */
+}
+
+.hidden-info.show {
+    display: inline; /* Показывать, когда активировано */
+}
+
+/* Скрыть кнопку после клика */
+.hidden {
+    display: none;
+}
+
+/* Показать элементы ID и Phone */
+.hidden-content {
+    display: none;
+    font-size: 0.9em; /* делаем текст чуть меньше */
+}
+
+.show-btn {
+    cursor: pointer;
+    color: #0088cc;
+    background: none;
+    border: none;
+    padding: 5px;
+    margin: 0;
+}
+
+.show-btn:focus {
+    outline: none;
+}
+
+/* Наведение на строки таблицы для улучшения взаимодействия */
+tr:hover {
+    background-color: #f5f5f5; /* изменение фона при наведении */
+}
+/* Кнопка внутри таблицы */
+.button {
+    background-color: #0088cc; /* Синий цвет фона */
+    color: white; /* Белый текст */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Скругление углов */
+    padding: 5px 10px; /* Внутренние отступы */
+    cursor: pointer; /* Курсор в виде указателя */
+    transition: background-color 0.3s; /* Плавное изменение фона */
+}
+
+.button:hover {
+    background-color: #0077b3; /* Темно-синий цвет фона при наведении */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e6ebf0;
+    color: #333;
+    text-align: center;
+    padding-top: 50px;
+}
+.container {
+    background: white;
+    max-width: 400px; /* Установите максимальную ширину для контейнера */
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    color: #0088cc;
+}
+ol {
+    text-align: left; /* Выравнивание списка по левому краю */
+    display: inline-block;
+    text-align: left;
+    padding-left: 20px;
+}
+.language-switcher {
+    margin-top: 20px;
+}
+.link, .link:visited, .link:hover {
+    color: #0088cc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.link:hover {
+    text-decoration: underline;
+}
+.language-switcher a, .language-switcher a:visited {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.language-switcher a:hover {
+    text-decoration: underline;
+}
+/* Стили для кнопки продолжения */
+.btn-continue {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 10px 0;
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-continue:hover {
+    background-color: #0077b3;
+}
+.input-field {
+    width: calc(100% - 40px); /* Вычитаем padding контейнера */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block; /* Чтобы label шли один за другим */
+    margin-top: 20px; /* Добавляем немного места сверху */
+    color: #333;
+    font-weight: bold;
+}
+
+form {
+    margin-top: 30px; /* Дополнительный отступ от заголовка */
+}
+
+.language-switcher {
+    margin-top: 30px; /* Отступ от кнопки */
+    padding-top: 10px; /* Немного паддинга сверху */
+    border-top: 1px solid #eee; /* Легкая горизонтальная линия */
+}
+
+/* Дополнительные стили, если нужно, чтобы поля ввода выглядели компактнее */
+.input-field {
+    height: 40px; /* Фиксированная высота для полей ввода */
+}
+
+.flash-message {
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .flash-error {
+    background-color: #f44336; /* Красный цвет фона */
+    color: #ffffff; /* Белый текст */
+  }
+  
+  /* Если есть флеш-сообщения других категорий, можно стилизовать их также */
+  .flash-success {
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: #ffffff; /* Белый текст */
+  }
+  
+  .flash-info {
+    background-color: #2196F3; /* Синий цвет фона */
+    color: #ffffff; /* Белый текст */
+  }
+  
+  .flash-warning {
+    background-color: #ffeb3b; /* Желтый цвет фона */
+    color: #333333; /* Темный текст для контраста */
+  }
+
+.chat-history {
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    max-width: 70%;
+    word-wrap: break-word; /* Позволяет переносить длинные слова на новую строку */
+    overflow-wrap: break-word; /* Обеспечивает перенос на новую строку внутри длинных слов (включая URL) */
+}
+
+.message a {
+    color: inherit; /* Ссылки будут иметь такой же цвет текста, как и весь бабл сообщения */
+    text-decoration: none; /* Убирает подчеркивание ссылки */
+    word-break: break-all; /* Переносит длинные URL на новую строку по символам */
+}
+
+.incoming {
+    background-color: #e5e5ea;
+    align-self: flex-start;
+}
+
+.outgoing {
+    background-color: #007aff;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto; /* Выравнивание по правому краю */
+}
+
+.message p {
+    margin: 5px 0;
+}
+
+.modal {
+    display: none; /* Скрыть модальное окно по умолчанию */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 100px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.message-date {
+    bottom: 5px;
+    right: 10px;
+    color: #555; /* Нейтральный серый цвет */
+    font-size: 0.8em; /* Немного уменьшенный размер для даты */
+}
+
+.message-search {
+    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+    width: 50%; /* Пример, подстрой под свой дизайн */
+    padding: 5px;
+}
+
+input[type="text"] {
+    width: 100%; /* Или другой подходящий размер */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+input[type="datetime-local"], input[type="text"] {
+    margin-right: 10px;
+}
+.message img {
+            max-width: 100%; /* Максимальная ширина изображения не больше ширины контейнера */
+            max-height: 300px; /* Максимальная высота изображения */
+            height: auto; /* Автоматическая высота для сохранения пропорций */
+            display: block; /* Изображение блочного типа */
+            margin: 0 auto; /* Центрирование изображения */
+        }
