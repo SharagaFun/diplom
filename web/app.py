@@ -18,12 +18,23 @@ from PIL import Image
 from io import BytesIO
 from flask_wtf import CSRFProtect
 
+
+csp = {
+    'default-src': [
+        '\'self\''
+    ],
+    'script-src': [
+        '\'self\'',
+        '\'unsafe-inline\''
+    ]
+}
+
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-Talisman(app, content_security_policy=None, force_https=False)
+Talisman(app, content_security_policy=csp, force_https=False)
 asgi_app = WsgiToAsgi(app)
 app.config['SECRET_KEY'] = os.urandom(24)
 csrf = CSRFProtect(app)
