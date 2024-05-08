@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify, Talisman
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask_talisman import Talisman
 from flask_babel import Babel
 from flask_sqlalchemy import SQLAlchemy
 import requests
