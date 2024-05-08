@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, Talisman
 from flask_babel import Babel
 from flask_sqlalchemy import SQLAlchemy
 import requests
@@ -22,6 +22,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+Talisman(app, content_security_policy=None)
 asgi_app = WsgiToAsgi(app)
 app.config['SECRET_KEY'] = os.urandom(24)
 csrf = CSRFProtect(app)
