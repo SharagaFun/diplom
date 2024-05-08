@@ -18,3 +18,4 @@ hypercorn
 asgiref
 Pillow
 flask-WTF
+Flask-Talisman
