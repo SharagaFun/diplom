@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-Talisman(app, content_security_policy=None)
+Talisman(app, content_security_policy=None, force_https=False)
 asgi_app = WsgiToAsgi(app)
 app.config['SECRET_KEY'] = os.urandom(24)
 csrf = CSRFProtect(app)
